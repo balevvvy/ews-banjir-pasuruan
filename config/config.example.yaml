@@ -1,0 +1,31 @@
+camera:
+  # Sumber video. Pilihan:
+  #   1                               -> webcam ke-1 (DroidCam via USB muncul sebagai webcam virtual)
+  #                                      jalankan cek_kamera.bat untuk tahu nomornya
+  #   "http://192.168.1.5:4747/video" -> DroidCam lewat WiFi
+  #   "data/recordings/rekaman_raw.mp4" -> file video, diputar berulang (sumber cadangan)
+  #   "rtsp://user:pass@ip:554/..."   -> kamera IP / CCTV
+  source: 1
+  # Resolusi yang diminta ke kamera. Kamera boleh memberi resolusi lain;
+  # kalibrasi selalu mengikuti resolusi yang benar-benar diterima.
+  width: 1280
+  height: 720
+
+detection:
+  sensitivity: 30      # selisih piksel minimum dianggap berubah (5-100)
+  blur_size: 21        # ukuran blur Gaussian, ganjil (3-51)
+  debounce_sec: 5      # status harus stabil selama N detik sebelum dikonfirmasi
+  process_fps: 15      # batas frame yang diproses per detik
+
+ptz:
+  # Kontrol PTZ untuk kamera Dahua yang dipakai di lokasi PKL.
+  # Untuk kamera tetap (DroidCam/webcam) biarkan false; tombol PTZ di dashboard
+  # hanya menampilkan keterangan.
+  enabled: false
+  ip: ""
+  username: ""
+  password: ""
+  channel: 0
+
+server:
+  reading_interval_sec: 5   # jeda simpan pembacaan ke database
